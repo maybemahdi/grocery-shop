@@ -16,6 +16,49 @@
   }
 }
 
+/* global.css or your main CSS file */
+html, body {
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden; /* This prevents horizontal scrolling */
+}
+
 body {
   font-family: "Rubik", sans-serif;
+}
+
+
+/* General scrollbar for everything (nested scrollbars) */
+::-webkit-scrollbar {
+  height: 8px;
+  width: 8px; /* For vertical scrollbars */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #a3a1a1;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+}
+
+/* Specific scrollbar for the main page (body/html) */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 10px; /* Increase the width for the main scrollbar */
+  height: 12px; /* Increase height for horizontal scrollbar */
+}
+
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb {
+  background-color: #a3a1a1;
+  border-radius: 10px;
+}
+
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+  border-radius: 10px;
 }

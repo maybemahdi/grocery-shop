@@ -1,6 +1,7 @@
-"use client"
+"use client";
 import React, { useEffect, useState } from "react";
 import "./globals.css";
+import Nav from "@/components/nav";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   // State to track whether the component is mounted (client-side only)
@@ -21,7 +22,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head />
       <body>
-        <div className="mx-auto mt-5">{children}</div>
+        <Nav />
+        <div>{children}</div>
       </body>
     </html>
   );
