@@ -5,7 +5,7 @@ const Banner = () => {
   return (
     <div className="relative h-auto">
       <div className="flex flex-col md:flex-row gap-6 justify-between items-center min-h-screen">
-        <div className="flex flex-col justify-center gap-6 basis-2/3 mx-8 md:ml-[120px] mt-[120px]">
+        <div className="flex flex-col justify-center gap-6 basis-2/3 mx-8 md:ml-[90px] mt-[170px]">
           <button className="text-main shadow cursor-auto w-fit p-1">
             Welcome to Fresh Harvest
           </button>
@@ -19,6 +19,7 @@ const Banner = () => {
           <button className="bg-orange rounded-md py-3 px-8 text-white w-fit font-semibold">
             Shop Now
           </button>
+          {/* special offer  */}
           <div className="flex gap-5 md:ml-[120px]">
             <img
               src="/images/arrow.png"
@@ -51,6 +52,7 @@ const Banner = () => {
               />
             </div>
           </div>
+          {/* Download app section  */}
           <div className="my-[50px] z-20">
             <p className="text-para text-sm">Download App</p>
             <div className="flex gap-4 mt-3">
@@ -84,13 +86,13 @@ const Banner = () => {
       <div className="absolute hidden md:block right-0 top-0 w-[501px] -z-10 h-full bg-main"></div>
       <div className="absolute md:hidden block right-0 top-0 w-[120px] -z-10 h-[877px] bg-main"></div>
       {/* leaf image  */}
-      <div className="absolute hidden md:block mt-[50px] -left-[80px] top-0">
+      <div className="absolute hidden md:block mt-[100px] -left-[80px] top-0">
         <img className="" src="/images/leaf1.png" alt="leaf" />
       </div>
       <div className="absolute hidden md:block mt-[200px] -right-[100px] top-0">
         <img className="" src="/images/leaf2.png" alt="leaf" />
       </div>
-      <div className="absolute hidden md:block mt-[200px] right-1/2 top-0">
+      <div className="absolute hidden md:block mt-[200px] right-[40%] top-0">
         <img className="" src="/images/leaf3.png" alt="leaf" />
       </div>
       <div className="absolute hidden md:block mb-[200px] left-20 bottom-0">
