@@ -1,14 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+import SectionTag from "../SectionTag";
 
 const Banner = () => {
   return (
     <div className="relative h-auto">
       <div className="flex flex-col md:flex-row gap-6 justify-between items-center min-h-screen">
         <div className="flex flex-col justify-center gap-6 basis-2/3 mx-8 md:ml-[90px] mt-[170px]">
-          <button className="text-main shadow cursor-auto w-fit p-1">
-            Welcome to Fresh Harvest
-          </button>
+          <SectionTag text={"Welcome to Fresh Harvest"} />
           <h2 className="font-medium text-[48px] md:text-[60px] md:w-[50%] leading-tight text-text">
             Fresh Fruits and Vegetables
           </h2>
@@ -84,7 +83,7 @@ const Banner = () => {
       </div>
       {/* side green color  */}
       <div className="absolute hidden md:block right-0 top-0 w-[501px] -z-10 h-full bg-main"></div>
-      <div className="absolute md:hidden block right-0 top-0 w-[120px] -z-10 h-[877px] bg-main"></div>
+      <div className="absolute md:hidden block right-0 top-0 w-[150px] -z-10 h-[877px] bg-main"></div>
       {/* leaf image  */}
       <div className="absolute hidden md:block mt-[100px] -left-[80px] top-0">
         <img className="" src="/images/leaf1.png" alt="leaf" />
@@ -98,7 +97,7 @@ const Banner = () => {
       <div className="absolute hidden md:block mb-[200px] left-20 bottom-0">
         <img className="" src="/images/leaf3.png" alt="leaf" />
       </div>
-      <div className="absolute md:hidden block mt-[150px] right-1/2 top-0">
+      <div className="absolute md:hidden block mt-[200px] right-1/2 top-0">
         <img className="" src="/images/leaf3.png" alt="leaf" />
       </div>
     </div>

@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import "./globals.css";
 import Nav from "@/components/Nav";
+import Loading from "@/components/Loading";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   // State to track whether the component is mounted (client-side only)
@@ -15,17 +17,21 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
   // Avoid rendering layout until it's mounted on the client
   if (!isMounted) {
-    return null; // Or a loading spinner, skeleton, or placeholder
+    return <Loading />; // Or a loading spinner, skeleton, or placeholder
   }
+
+  const queryClient = new QueryClient();
 
   return (
     <html lang="en">
       <head />
       <body>
-        <div className="w-[88%] mx-auto">
-          <Nav />
-        </div>
-        <div>{children}</div>
+        <QueryClientProvider client={queryClient}>
+          <div className="w-[88%] mx-auto">
+            <Nav />
+          </div>
+          <div>{children}</div>
+        </QueryClientProvider>
       </body>
     </html>
   );
