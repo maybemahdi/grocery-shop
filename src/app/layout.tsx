@@ -8,18 +8,14 @@ import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  // State to track whether the component is mounted (client-side only)
   const [isMounted, setIsMounted] = useState(false);
 
-  // This effect runs only on the client side after the component has mounted
   useEffect(() => {
-    // Mark the component as mounted (client-side)
     setIsMounted(true);
   }, []);
 
-  // Avoid rendering layout until it's mounted on the client
   if (!isMounted) {
-    return <Loading />; // Or a loading spinner, skeleton, or placeholder
+    return <Loading />;
   }
 
   const queryClient = new QueryClient();

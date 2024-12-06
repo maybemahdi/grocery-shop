@@ -15,5 +15,9 @@ const menuItems = [
     name: "Blog",
     path: "/blog",
   },
+  {
+    name: "Admin",
+    path: "/admin",
+  },
 ];
 export default menuItems;
