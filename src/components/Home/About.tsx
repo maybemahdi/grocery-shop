@@ -5,6 +5,7 @@ import SectionHead from "../SectionHead";
 import ProductCard from "../ProductCard";
 
 const demoProduct = {
+  id: "1234",
   productName: "Mushroom",
   price: 2.3,
   isSmall: true,

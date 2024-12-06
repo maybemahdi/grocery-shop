@@ -1,9 +1,10 @@
+import About from '@/components/Home/About';
 import React from 'react';
 
 const page = () => {
     return (
-        <div className='mt-[170px]'>
-            Login
+        <div className='my-[150px]'>
+            <About />
         </div>
     );
 };

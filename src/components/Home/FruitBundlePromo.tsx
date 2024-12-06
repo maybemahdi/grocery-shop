@@ -37,7 +37,7 @@ export default function FruitBundlePromo() {
   }, []);
 
   return (
-    <div className="relative bg-[#ddd] px-8 md:px-[90px] py-[120px] overflow-hidden mt-[100px] mb-20">
+    <div className="relative bg-[#ddd] px-8 md:px-[90px] py-[120px] overflow-hidden mt-[150px] mb-20">
       {/* Background decorative elements */}
       <div className="absolute inset-0 bg-[url('/images/Bg.jpg')] opacity-5" />
 

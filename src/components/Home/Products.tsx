@@ -11,7 +11,14 @@ import imageLinks from "@/utils/ProductImageLinks";
 interface IProduct {
   productName: string;
   price: number;
+  categoryId: string;
 }
+
+const categoryMapper = {
+  fruits: "6751516f9c52879c1fde6558",
+  Salad: "6751569e0e539396658e60a9",
+  Vegetable: "6751584feaeaa5cc21bbe21b",
+};
 
 const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
@@ -36,10 +43,16 @@ const Products = () => {
       </div>
     );
   }
+
+  const selectedCategoryId =
+    selectedCategory === "All"
+      ? ""
+      : categoryMapper[selectedCategory as keyof typeof categoryMapper];
+
   // Filter products based on the selected category
-  const filteredProducts = products.filter((product: IProduct) => {
-    return true;
-  });
+  const filteredProducts = products.filter((product: IProduct) =>
+    selectedCategoryId ? product.categoryId === selectedCategoryId : true
+  );
 
   const productsToShow = showAll
     ? filteredProducts
@@ -56,7 +69,7 @@ const Products = () => {
       </div>
       {/* Filter buttons */}
       <div className="flex gap-4 items-center justify-center my-6 flex-wrap">
-        {["All", "Fruit", "Vegetables", "Salad"].map((category) => (
+        {["All", "fruits", "Vegetable", "Salad"].map((category) => (
           <button
             key={category}
             onClick={() => {

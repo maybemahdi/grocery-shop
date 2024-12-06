@@ -5,6 +5,7 @@ import Nav from "@/components/Nav";
 import Loading from "@/components/Loading";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Footer from "@/components/Footer";
+import { Toaster } from "react-hot-toast";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   // State to track whether the component is mounted (client-side only)
@@ -27,6 +28,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head />
       <body>
+        <Toaster />
         <QueryClientProvider client={queryClient}>
           <div className="w-[88%] mx-auto">
             <Nav />
