@@ -6,14 +6,15 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import ShineSkeleton from "../ShineSkeleton";
 import ProductCard from "../ProductCard";
+import imageLinks from "@/utils/ProductImageLinks";
 
 interface IProduct {
-  images: string[];
   productName: string;
-  price: string;
+  price: number;
 }
 
 const Products = () => {
+  const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [showAll, setShowAll] = useState(false);
   const {
     data: products,
@@ -28,23 +29,6 @@ const Products = () => {
       return data.data;
     },
   });
-  const imageLinks = [
-    "https://i.ibb.co.com/2v6x6Xb/banana.jpg",
-    "https://i.ibb.co.com/1RPZrYQ/coconut.jpg",
-    "https://i.ibb.co.com/9ZPsVmC/Guava.png",
-    "https://i.ibb.co.com/crRM5H4/pomegrate.webp",
-    "https://i.ibb.co.com/NmJ6w94/Kiwi.jpg",
-    "https://i.ibb.co.com/xzVYKL1/mustard.png",
-    "https://i.ibb.co.com/QMRmJGn/massrom.webp",
-    "https://i.ibb.co.com/YPyh8kW/Cauliflower.png",
-    "https://i.ibb.co.com/8gKNXM0/Eggplant.png",
-    "https://i.ibb.co.com/dK1D6GG/SnapPea.png",
-    "https://i.ibb.co.com/4f4CwCW/Onion.png",
-    "https://i.ibb.co.com/RynQHmG/Caesear-Salad.webp",
-    "https://i.ibb.co.com/wr2tsVR/Corn-Salad.jpg",
-    "https://i.ibb.co.com/446HSWG/Fruit-Salad.jpg",
-  ];
-
   if (isLoading) {
     return (
       <div className="px-8 md:px-[90px] my-20">
@@ -52,32 +36,53 @@ const Products = () => {
       </div>
     );
   }
-  const productsToShow = showAll ? products : products.slice(0, 8);
+  // Filter products based on the selected category
+  const filteredProducts = products.filter((product: IProduct) => {
+    return true;
+  });
+
+  const productsToShow = showAll
+    ? filteredProducts
+    : filteredProducts.slice(0, 8);
   return (
     <div className="my-20 px-8 md:mx-[90px]">
       <div className="flex flex-col justify-center items-center gap-1 w-fit mx-auto">
         <SectionTag text={"Our Products"} />
         <SectionHead text={"Our Fresh Products"} />
-        <p className="text-para text-center text-sm font-normal w-full md:w-[60%]">
+        <p className="text-para text-center text-sm font-normal w-full md:w-[60%] font-questrial">
           We pride ourselves on offering a wide variety of fresh and flavorful
           fruits, vegetables, and salad ingredients.
         </p>
       </div>
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-10">
+      {/* Filter buttons */}
+      <div className="flex gap-4 items-center justify-center my-6 flex-wrap">
+        {["All", "Fruit", "Vegetables", "Salad"].map((category) => (
+          <button
+            key={category}
+            onClick={() => {
+              setSelectedCategory(category);
+              refetch();
+            }}
+            className={`${
+              selectedCategory === category
+                ? "bg-main text-white"
+                : "bg-white text-text"
+            } hover:bg-main hover:text-white text-text border border-[#D9D9D9] rounded-lg py-2 px-8 w-fit font-normal transition-all duration-300`}
+          >
+            {category}
+          </button>
+        ))}
+      </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mt-10">
         {productsToShow.length > 0 ? (
           productsToShow.map((product: IProduct, idx: number) => {
-            // Use imageLinks[idx] to get the corresponding image for each product
-            const productImage = imageLinks[idx % imageLinks.length]; // In case products exceed image links
+            const productImage = imageLinks[idx % imageLinks.length];
             return (
-              <ProductCard
-                key={idx}
-                product={product}
-                image={productImage} // Pass the image to ProductCard
-              />
+              <ProductCard key={idx} product={product} image={productImage} />
             );
           })
         ) : (
-          <p>No products available.</p> // Fallback message when no products
+          <p>No products available.</p>
         )}
       </div>
       <div className="flex justify-center mt-8">

@@ -4,6 +4,7 @@ import "./globals.css";
 import Nav from "@/components/Nav";
 import Loading from "@/components/Loading";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Footer from "@/components/Footer";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   // State to track whether the component is mounted (client-side only)
@@ -31,6 +32,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <Nav />
           </div>
           <div>{children}</div>
+          <div>
+            <Footer />
+          </div>
         </QueryClientProvider>
       </body>
     </html>
