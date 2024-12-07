@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import { FaFacebook, FaInstagram, FaTwitch } from "react-icons/fa";

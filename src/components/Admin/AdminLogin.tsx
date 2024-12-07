@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import dynamic from "next/dynamic";
+import Cookies from "js-cookie";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -31,9 +33,13 @@ const AdminLogin = () => {
       if (data?.success) {
         // Login was successful
         localStorage.setItem("adminToken", data.data.token);
+        Cookies.set("adminToken", data.data.token, {
+          secure: true, // Ensures cookies are sent over HTTPS
+          sameSite: "strict", // Prevents CSRF attacks
+          expires: 7, // Token valid for 7 days
+        });
         toast.success("Admin Login successful");
         form.reset();
-        window.location.reload();
         router.push("/admin");
       } else {
         // Login failed
@@ -98,4 +104,5 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default dynamic(() => Promise.resolve(AdminLogin), { ssr: false });
+

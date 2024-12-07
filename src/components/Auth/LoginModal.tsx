@@ -14,13 +14,13 @@ import { Checkbox } from "@/components/ui/checkbox";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { RegisterModal } from "./RegisterModal";
-// import { RegisterModal } from "./RegisterModal";
+import dynamic from "next/dynamic";
 interface LoginModalProps {
   open: boolean;
   setOpen: (value: boolean) => void;
 }
 
-export function LoginModal({ open, setOpen }: LoginModalProps) {
+const LoginModal = ({ open, setOpen }: LoginModalProps) => {
   
   const [registerModalOpen, setRegisterModalOpen] = React.useState(false);
   const [showPassword, setShowPassword] = React.useState(false);
@@ -44,7 +44,9 @@ export function LoginModal({ open, setOpen }: LoginModalProps) {
         localStorage.setItem("token", data.data.token);
         toast.success(data.message);
         form.reset();
-        window.location.reload();
+         if (typeof window !== "undefined") {
+           window.location.reload();
+         }
       } else {
         // Login failed
         toast.error(data?.message || "Failed to log in");
@@ -150,3 +152,4 @@ export function LoginModal({ open, setOpen }: LoginModalProps) {
     </>
   );
 }
+export default dynamic(() => Promise.resolve(LoginModal), { ssr: false });

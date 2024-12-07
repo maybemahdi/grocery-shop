@@ -19,7 +19,7 @@ const Banner = () => {
             Shop Now
           </button>
           {/* special offer  */}
-          <div className="flex gap-5 md:ml-[120px]">
+          <div className="flex z-20 gap-5 md:ml-[120px]">
             <img
               src="/images/arrow.png"
               alt="arrow"
@@ -52,7 +52,7 @@ const Banner = () => {
             </div>
           </div>
           {/* Download app section  */}
-          <div className="my-[50px] z-20">
+          <div className="my-[50px] z-40">
             <p className="text-para text-sm">Download App</p>
             <div className="flex gap-4 mt-3">
               <img src="/images/appstore.png" alt="" />
@@ -69,7 +69,7 @@ const Banner = () => {
           alt="banner"
         />
       </div>
-      <div className="absolute md:hidden right-0 bottom-0 z-10 flex items-center">
+      <div className="z-30 absolute md:hidden right-0 bottom-0 flex items-center">
         <img
           src="/images/icon1.png"
           alt="icon"

@@ -8,9 +8,11 @@ import React, { useEffect, useState } from "react";
 import { FaShoppingCart, FaTrash } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 import { IoClose, IoMenu } from "react-icons/io5";
-import { LoginModal } from "./Auth/LoginModal";
 import menuItems from "@/utils/menuItems";
 import toast from "react-hot-toast";
+import dynamic from "next/dynamic";
+import LoginModal from "./Auth/LoginModal";
+
 
 const Nav = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -66,7 +68,7 @@ const Nav = () => {
 
   return (
     <nav
-      className={`flex justify-between items-center py-8 fixed top-0 left-0 right-0 px-6 md:px-[90px] z-50 ${
+      className={`flex justify-between items-center py-8 fixed top-0 left-0 right-0 px-6 md:px-[90px] z-[100] ${
         isScrolled ? "bg-white shadow-md" : ""
       }`}
     >
@@ -177,7 +179,7 @@ const Nav = () => {
             ? "translate-x-0 opacity-100"
             : "translate-x-full opacity-0"
         }`}
-        style={{ width: "30%" }} // Adjust the width as needed
+        style={{ width: "50%" }} // Adjust the width as needed
       >
         <div className="flex justify-end p-4">
           <IoClose
@@ -273,4 +275,5 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default dynamic(() => Promise.resolve(Nav), { ssr: false });
+

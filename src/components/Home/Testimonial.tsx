@@ -1,6 +1,8 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
 import SectionTag from "../SectionTag";
 import SectionHead from "../SectionHead";
-import { FaQuoteLeft, FaRegStar, FaStar, FaQuoteRight } from "react-icons/fa";
+import { FaQuoteLeft } from "react-icons/fa";
 
 const Testimonial = () => {
   
@@ -10,7 +12,7 @@ const Testimonial = () => {
         <SectionTag text={"Testimonial"} />
         <SectionHead text={"What Our Customers Say"} />
         <p className="text-para text-center text-sm font-normal w-full md:w-[60%] font-questrial">
-          Don't just take our word for it—here's what some of our customers have
+          Dont just take our word for it heres what some of our customers have
           to say about their experience with Fresh Harvest:
         </p>
       </div>
@@ -24,8 +26,8 @@ const Testimonial = () => {
           <div className="flex items-center justify-between relative">
           </div>
           <p className=" text-justify text-[0.9rem] my-3 text-text font-questrial">
-            "I absolutely love Fresh Harvest! The quality of their produce is
-            outstanding. It's always fresh, flavorful, and delicious. The
+            I absolutely love Fresh Harvest! The quality of their produce is
+            outstanding. Its always fresh, flavorful, and delicious. The
             convenience of ordering online and having it delivered to my
             doorstep saves me so much time. Fresh Harvest has become my go-to
             for all my fruit and vegetable needs.

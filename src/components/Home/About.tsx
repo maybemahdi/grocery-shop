@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import SectionTag from "../SectionTag";
-import SectionHead from "../SectionHead";
 import ProductCard from "../ProductCard";
 
 const demoProduct = {
@@ -12,7 +11,7 @@ const demoProduct = {
 };
 const About = () => {
   return (
-    <div className="flex flex-col justify-center items-center md:flex-row gap-24 md:gap-8 container px-8 md:px-[90px] my-20">
+    <div className="flex flex-col justify-center items-center md:flex-row gap-24 md:gap-8 container px-8 md:px-[90px] mb-20">
       <div className="basis-1/2 relative">
         <img src="/images/man-1.png" alt="product" />
         <div className="absolute top-[70%] right-8">
@@ -28,9 +27,11 @@ const About = () => {
           <img src="/images/logoText.png" alt="logoText" className="h-[13px]" />
         </div>
       </div>
-      <div className="basis-1/2 flex flex-col gap-4 z-10">
+      <div className="basis-1/2 flex flex-col gap-4 z-10 mt-[100px] md:mt-0">
         <SectionTag text={"About Us"} />
-        <SectionHead text={"About Fresh Harvest"} />
+        <h3 className="text-[32px] md:text-[48px] font-medium leading-normal md:font-semibold text-text ">
+          About Fresh Harvest
+        </h3>
         <p className="text-para text-sm font-normal w-full md:w-[60%] font-questrial">
           Welcome to Fresh Harvest, your premier destination for high-quality
           and fresh produce. We are passionate about providing you with the

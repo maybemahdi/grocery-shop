@@ -1,24 +1,16 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import "./globals.css";
 import Nav from "@/components/Nav";
-import Loading from "@/components/Loading";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Footer from "@/components/Footer";
 import { Toaster } from "react-hot-toast";
+import { usePathname } from "next/navigation";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return <Loading />;
-  }
-
+  const pathname = usePathname();
   const queryClient = new QueryClient();
+  const isAdmin = pathname.startsWith("/admin");
 
   return (
     <html lang="en">
@@ -26,13 +18,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <body>
         <Toaster />
         <QueryClientProvider client={queryClient}>
-          <div className="w-[88%] mx-auto">
-            <Nav />
-          </div>
+          <div className="w-[88%] mx-auto">{!isAdmin && <Nav />}</div>
           <div>{children}</div>
-          <div>
-            <Footer />
-          </div>
+          <div>{!isAdmin && <Footer />}</div>
         </QueryClientProvider>
       </body>
     </html>

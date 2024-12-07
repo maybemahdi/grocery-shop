@@ -128,7 +128,7 @@ export function RegisterModal({ open, setOpen }: RegisterModalProps) {
               </div>
             </div>
             <div className="text-center text-sm">
-              {"Don't have an account? "}
+              {"Have an account? "}
               <Button
                 variant="link"
                 // onClick={() => {

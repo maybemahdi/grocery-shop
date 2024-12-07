@@ -1,58 +1,37 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
+import React, { useState } from "react";
 import "../globals.css";
-import Loading from "@/components/Loading";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
-import TopNav from "@/components/Admin/TopNav";
 import Sidebar from "@/components/Admin/Sidebar";
-import { useRouter } from "next/navigation";
+import TopNav from "@/components/Admin/TopNav";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  const [isMounted, setIsMounted] = useState(false);
-  const router = useRouter();
-
-  useEffect(() => {
-    const adminToken = localStorage.getItem("adminToken");
-    if (!adminToken) {
-      router.push("/admin/login");
-    }
-  }, [router]);
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return <Loading />;
-  }
-
+export default function AdminLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const queryClient = new QueryClient();
 
+   const [openSidebar, setOpenSidebar] = useState(false);
+
   return (
-    <html lang="en">
-      <head />
-      <body>
-        <Toaster />
-        <QueryClientProvider client={queryClient}>
-          <div className="flex h-screen">
-            {/* Sidebar */}
-            <div className="w-64 bg-gray-800 text-white p-4">
-              <Sidebar />
-            </div>
-
-            {/* Main Content */}
-            <div className="flex-1 flex flex-col overflow-auto">
-              {/* Top Navigation */}
-              <div className="bg-white shadow-md">
-                <TopNav />
-              </div>
-
-              {/* Content */}
-              <main className="flex-1 p-6 bg-gray-100">{children}</main>
-            </div>
+    <>
+      <Toaster />
+      <QueryClientProvider client={queryClient}>
+        <div className="flex min-h-screen w-full">
+          {/* admin sidebar */}
+          <Sidebar open={openSidebar} setOpen={setOpenSidebar} />
+          <div className="flex flex-1 flex-col">
+            {/* admin header */}
+            <TopNav setOpen={setOpenSidebar} />
+            <main className="flex-1 flex-col flex bg-muted/40 p-4 md:p-6">
+              {children}
+            </main>
           </div>
-        </QueryClientProvider>
-      </body>
-    </html>
+        </div>
+      </QueryClientProvider>
+    </>
   );
 }

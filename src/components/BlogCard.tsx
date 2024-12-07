@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { IBlog } from "@/utils/blogs";
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";

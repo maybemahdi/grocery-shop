@@ -49,10 +49,16 @@ export default function ProductUploadForm() {
     };
 
     try {
-      const {data} = await axios.post(
+      const adminToken = localStorage.getItem("adminToken");
+      const { data } = await axios.post(
         `${process.env.NEXT_PUBLIC_BASE_URL}/products`,
-        payload
-      ); // Replace with your server endpoint
+        payload,
+        {
+          headers: {
+            Authorization: adminToken
+          },
+        }
+      ); 
       console.log("Product uploaded successfully:", data.data);
       toast.success("Product uploaded successfully!");
       setFormData({
